@@ -1,4 +1,13 @@
 <?php
+// Verifica se a extensão PDO e PDO_PGSQL estão habilitadas
+if (!extension_loaded('pdo')) {
+    die('A extensão PDO não está habilitada.');
+}
+
+if (!extension_loaded('pdo_pgsql')) {
+    die('A extensão PDO_PGSQL não está habilitada.');
+}
+
 // Configuração da conexão com o banco de dados PostgreSQL
 $dsn = "pgsql:host=ep-spring-butterfly-a5f6zfko-pooler.us-east-2.aws.neon.tech;dbname=neondb;sslmode=require";
 $username = "neondb_owner";
