@@ -1,21 +1,14 @@
 <?php
+$servername = "ep-spring-butterfly-a5f6zfko-pooler.us-east-2.aws.neon.tech";
+$username = "neondb_owner"; // seu nome de usuário do MySQL
+$password = "npg_y3fzF1kdcTxM"; // sua senha do MySQL
+$dbname = "neondb"; // nome do seu banco de dados
 
-$host = $_ENV['PG_HOST'];
-$port = $_ENV['PG_PORT'];
-$db = $_ENV['PG_DB'];
-$user = $_ENV['PG_USER'];
-$password = $_ENV['PG_PASSWORD'];
+// Cria a conexão
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 
-$dsn = "pgsql:host=$host;port=$port;dbname=$db;sslmode=require";
-
-try {
-    $conexao = new PDO($dsn, $user, $password);
-    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Conexão bem-sucedida!";
-} catch (PDOException $e) {
-    die("Erro na conexão: " . $e->getMessage());
+// Verifica a conexão
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
-
-// Não se esqueça de fechar a conexão quando terminar
-// $conexao = null;
 ?>
