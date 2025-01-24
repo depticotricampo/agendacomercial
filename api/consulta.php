@@ -1,5 +1,5 @@
 <?php
-require './api/verificar_login.php';
+require 'verificar_login.php';
 if(isset($_GET['Consultar_Data'])){
     include_once('config.php');
     $sql = "SELECT titulo, data_inicial,data_fim, descricao FROM evento";
