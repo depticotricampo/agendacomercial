@@ -19,6 +19,11 @@
       "destination": "/list-all.json"
     }
   ],
+  "functions": {
+    "api/*.php": {
+      "runtime": "vercel-php@0.1.0"
+    }
+  },
   "github": {
     "silent": true,
     "autoJobCancelation": true
