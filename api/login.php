@@ -1,6 +1,6 @@
 <?php
 session_start();
-require './api/config.php'; // Inclui o arquivo de configuração
+require 'config.php'; // Inclui o arquivo de configuração
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $usuario = $_POST['user'];
