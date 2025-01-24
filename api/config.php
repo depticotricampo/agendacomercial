@@ -1,15 +1,22 @@
 <?php
 // Configuração da conexão com o banco de dados PostgreSQL
-$dbConnectionString = "postgresql://neondb_owner:npg_y3fzF1kdcTxM@ep-spring-butterfly-a5f6zfko-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require&options=endpoint%3Dep-spring-butterfly-a5f6zfko-pooler";
+$host = 'ep-spring-butterfly-a5f6zfko-pooler.us-east-2.aws.neon.tech';
+$database = 'neondb';
+$user = 'neondb_owner';
+$password = 'npg_y3fzF1kdcTxM';
 
-// Tenta estabelecer a conexão
-$conexao = pg_connect($dbConnectionString);
+$dsn = "pgsql:host=$host;dbname=$database;sslmode=require";
 
-// Verifica se a conexão foi bem-sucedida
-if (!$conexao) {
-    die("Erro na conexão: " . pg_last_error());
+try {
+    // Tenta estabelecer a conexão
+    $conexao = new PDO($dsn, $user, $password);
+    // Define o modo de erro do PDO para exceção
+    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Conexão bem-sucedida!";
+} catch (PDOException $e) {
+    die("Erro na conexão: " . $e->getMessage());
 }
 
 // Não se esqueça de fechar a conexão quando terminar
-// pg_close($conexao);
+// $conexao = null;
 ?>
