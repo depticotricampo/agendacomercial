@@ -16,5 +16,12 @@
     { "src": "/sede", "dest": "/api/sede.php" },
     { "src": "/verificar_login", "dest": "/api/verificar_login.php" }
   ]
+  "env": {
+    "PG_HOST": "ep-spring-butterfly-a5f6zfko-pooler.us-east-2.aws.neon.tech",
+    "PG_PORT": "5432",
+    "PG_DB": "neondb",
+    "PG_USER": "neondb_owner",
+    "PG_PASSWORD": "npg_y3fzF1kdcTxM"
+  }
   
   }
