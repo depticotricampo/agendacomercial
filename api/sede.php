@@ -10,7 +10,7 @@
 </head>
 <body>
   <nav>
-    <a href="agenda.html" target="" rel="noopener noreferrer">Voltar a tela inicial</a>
+    <a href="../agenda.html" target="" rel="noopener noreferrer">Voltar a tela inicial</a>
     <h1>Pesquisar pelo Titulo</h1>
     <form method="POST" action="sede.php"> <!-- Corrigido para apontar para o mesmo arquivo -->
         Pesquisar:<input type="text" name="pesquisar" placeholder="PESQUISAR">
