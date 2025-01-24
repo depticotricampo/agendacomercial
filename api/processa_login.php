@@ -6,35 +6,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $usuario = $_POST['usuario'];
     $senha = $_POST['senha'];
 
-    // Conexão com PostgreSQL usando PDO
-    $dsn = "pgsql:host=ep-spring-butterfly-a5f6zfko-pooler.us-east-2.aws.neon.tech;dbname=neondb;sslmode=require";
-    $user = 'neondb_owner';
-    $password = 'npg_y3fzF1kdcTxM';
+    // Verifica se a conexão foi bem-sucedida
+    if (!$conexao) {
+        die("Erro na conexão com o banco de dados.");
+    }
 
-    try {
-        $conexao = new PDO($dsn, $user, $password);
-        $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // Prepara a consulta SQL
+    $sql = "SELECT * FROM usuarios WHERE usuario = $1 AND senha = $2";
+    $stmt = pg_prepare($conexao, "login_query", $sql);
+    $result = pg_execute($conexao, "login_query", array($usuario, $senha));
 
-        // Prepara a consulta SQL
-        $sql = "SELECT * FROM usuarios WHERE usuario = :usuario AND senha = :senha";
-        $stmt = $conexao->prepare($sql);
-        $stmt->bindParam(':usuario', $usuario);
-        $stmt->bindParam(':senha', $senha);
-        $stmt->execute();
-
-        // Verifica se o usuário foi encontrado
-        if ($stmt->rowCount() > 0) {
-            $_SESSION['usuario'] = $usuario;
-            header("Location: agenda.html");
-            exit(); // Certifique-se de chamar exit após o redirecionamento
-        } else {
-            echo "Usuário ou senha incorretos!";
-        }
-    } catch (PDOException $e) {
-        die("Erro na conexão com o banco de dados: " . $e->getMessage());
+    // Verifica se o usuário foi encontrado
+    if (pg_num_rows($result) > 0) {
+        $_SESSION['usuario'] = $usuario;
+        header("Location: agenda.html");
+        exit(); // Certifique-se de chamar exit após o redirecionamento
+    } else {
+        echo "Usuário ou senha incorretos!";
     }
 
     // Fecha a conexão
-    $conexao = null;
+    pg_close($conexao);
 }
 ?>
