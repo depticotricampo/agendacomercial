@@ -5,6 +5,7 @@ $database = 'neondb';
 $user = 'neondb_owner';
 $password = 'npg_y3fzF1kdcTxM';
 
+// Monta a string de conexão
 $dsn = "pgsql:host=$host;dbname=$database;sslmode=require";
 
 try {
