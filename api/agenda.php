@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['submit'])) {
-    include_once('./api/config.php');
+    include_once('api/agenda.php');
 
     $descricao = $_POST["desc"];
     $data_inicial = $_POST['d-i'];
