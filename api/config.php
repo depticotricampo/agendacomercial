@@ -1,5 +1,4 @@
 <?php
-<?php
 // Configuração da conexão com o banco de dados PostgreSQL
 $host = 'ep-spring-butterfly-a5f6zfko-pooler.us-east-2.aws.neon.tech';
 $database = 'neondb';
