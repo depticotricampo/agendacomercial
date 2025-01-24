@@ -22,7 +22,7 @@
 $conexao = null; // Inicializa a variável de conexão
 
 if (isset($_POST['pesquisar'])) {
-    include_once('./api/config.php');
+    include_once('config.php');
 
     // Tenta estabelecer a conexão
     $conexao = pg_connect($dbConnectionString);
