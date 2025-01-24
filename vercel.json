@@ -1,17 +1,32 @@
+
+### Explanation of Additional Configuration
+
+- **functions**: This section allows you to specify settings for your serverless functions. The `maxDuration` property sets the maximum execution time for your PHP functions, which can help prevent long-running processes from timing out.
+
+Make sure to test your deployment after adding this configuration to ensure everything works as expected. ```json
 {
-    "functions": {
-        "api/agenda.php": {
-            "runtime": "vercel-php@0.7.1"
-        }
-    },
-    "routes": [
-      {
-        "src": "/api/agenda.php",
-        "dest": "/api/agenda.php"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "/api/agenda.php"
-      }
-    ]
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/*.php",
+      "use": "@vercel/php"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "api/$1"
+    }
+  ],
+  "env": {
+    "DATABASE_URL": "postgresql://neondb_owner:npg_y3fzF1kdcTxM@ep-spring-butterfly-a5f6zfko-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require"
+  },
+  "functions": {
+    "api/*.php": {
+      "maxDuration": 10
+    }
+  },
+  "static": {
+    "directory": "public"
+  }
 }
