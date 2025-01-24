@@ -5,16 +5,14 @@
       }
     },
     "routes": [
-      { "src": "/(.*)",  "dest": "/api/agenda.php" },
-      { "src": "/(.*)",  "dest": "/api/config.php" },
-      { "src": "/(.*)",  "dest": "/api/consulta.php" },
-      { "src": "/(.*)",  "dest": "/api/formulario.php" },
-      { "src": "/(.*)",  "dest": "/api/login.php" },
-      { "src": "/(.*)",  "dest": "/api/logout.php" },
-      { "src": "/(.*)",  "dest": "/api/pesquisa.php" },
-      { "src": "/(.*)",  "dest": "/api/processa_login.php" },
-      { "src": "/(.*)",  "dest": "/api/sede.php" },
-      { "src": "/(.*)",  "dest": "/api/verificar_login.php" },
-      { "src": "/css/style.css", "dest": "/css/style.css" },
-      { "src": "/js/script.js", "dest": "/js/script.js" }]
+      { "src": "/(.*)",  "dest": "./api/agenda.php" },
+      { "src": "/(.*)",  "dest": "./api/config.php" },
+      { "src": "/(.*)",  "dest": "./api/consulta.php" },
+      { "src": "/(.*)",  "dest": "./api/formulario.php" },
+      { "src": "/(.*)",  "dest": "./api/login.php" },
+      { "src": "/(.*)",  "dest": "./api/logout.php" },
+      { "src": "/(.*)",  "dest": "./api/pesquisa.php" },
+      { "src": "/(.*)",  "dest": "./api/processa_login.php" },
+      { "src": "/(.*)",  "dest": "./api/sede.php" },
+      { "src": "/(.*)",  "dest": "./api/verificar_login.php" }]
   }
